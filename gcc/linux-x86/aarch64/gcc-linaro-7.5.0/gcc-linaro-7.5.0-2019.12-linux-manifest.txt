@@ -1,0 +1,247 @@
+manifest_format=1.6
+
+# Note that for ABE, these parameters are not used
+# Component data for gmp
+gmp_url=http://snapshots.linaro.org/components/toolchain/infrastructure
+gmp_filespec=gmp-6.1.2.tar.xz
+gmp_md5sum=f58fa8001d60c4c77595fbbb62b63c1d
+gmp_mingw_only="no"
+gmp_linuxhost_only="no"
+gmp_configure="--enable-cxx --enable-fft"
+gmp_staticlink="yes"
+
+# Component data for mpfr
+mpfr_url=http://snapshots.linaro.org/components/toolchain/infrastructure
+mpfr_filespec=mpfr-3.1.5.tar.xz
+mpfr_md5sum=c4ac246cf9795a4491e7766002cd528f
+mpfr_mingw_only="no"
+mpfr_linuxhost_only="no"
+mpfr_configure="--with-gmp=${local_builds}/destdir/${host}"
+mpfr_staticlink="yes"
+
+# Component data for mpc
+mpc_url=http://snapshots.linaro.org/components/toolchain/infrastructure/
+mpc_filespec=mpc-1.0.3.tar.gz
+mpc_md5sum=d6a1d5f8ddea3abd2cc3e98f58352d26
+mpc_mingw_only="no"
+mpc_linuxhost_only="no"
+mpc_configure="--with-gmp=${local_builds}/destdir/${host} --with-mpfr=${local_builds}/destdir/${host}"
+mpc_staticlink="yes"
+
+# Component data for linux
+linux_url=http://snapshots.linaro.org/components/toolchain/infrastructure
+linux_filespec=linux-4.10.3.tar.xz
+linux_md5sum=626292ab8b495e81efe6ee45baf6b817
+linux_mingw_only="no"
+linux_linuxhost_only="no"
+linux_staticlink="yes"
+
+# Component data for dejagnu
+dejagnu_url=http://git.linaro.org/git/toolchain
+dejagnu_branch=linaro-local/stable
+dejagnu_revision=21f2ff7c065d7ead6aec3e5ed528ecb0f9eadbac
+dejagnu_filespec=dejagnu.git
+dejagnu_mingw_only="no"
+dejagnu_linuxhost_only="no"
+dejagnu_staticlink="yes"
+
+# Component data for expat
+expat_url=http://snapshots.linaro.org/components/toolchain/infrastructure/
+expat_filespec=expat-2.1.0-1-mingw32-dev.tar.xz
+expat_md5sum=1dae54e2670882843d496692154a0e27
+expat_mingw_only="yes"
+expat_linuxhost_only="no"
+expat_staticlink="yes"
+
+# Component data for python
+python_url=http://snapshots.linaro.org/components/toolchain/infrastructure/
+python_filespec=python-2.7.4-mingw32.tar.xz
+python_md5sum=9b3092eff5508c4802936dfe4f5225ef
+python_mingw_only="yes"
+python_linuxhost_only="no"
+python_staticlink="yes"
+
+# Component data for libiconv
+libiconv_url=http://snapshots.linaro.org/components/toolchain/infrastructure/
+libiconv_filespec=libiconv-1.14-3-mingw32-dev.tar.xz
+libiconv_md5sum=7ead614fa3a8bc266e70c6fcdf198219
+libiconv_mingw_only="yes"
+libiconv_linuxhost_only="no"
+libiconv_staticlink="yes"
+
+# Component data for binutils
+binutils_url=http://git.linaro.org/git/toolchain
+binutils_branch=users/linaro/binutils-2_28-branch
+binutils_revision=0231dce141801ffcdfef8b7f14cd903a6d3f21ba
+binutils_filespec=binutils-gdb.git
+binutils_mingw_only="no"
+binutils_linuxhost_only="no"
+binutils_configure="--enable-lto --enable-plugins --enable-gold --disable-werror CPPFLAGS=-UFORTIFY_SOURCE --with-pkgversion=Linaro_Binutils-2019.12 --disable-gdb --disable-sim --disable-libdecnumber --disable-readline --with-sysroot=${sysroots}"
+binutils_staticlink="yes"
+
+# Component data for gcc
+gcc_url=http://git.linaro.org/git/toolchain
+gcc_branch=linaro-7.5-2019.12
+gcc_revision=44900969eaa3e634ec386fa51ce0810f92ef07e1
+gcc_filespec=gcc.git
+gcc_makeflags="MAKEINFOFLAGS=--force"
+gcc_mingw_only="no"
+gcc_linuxhost_only="no"
+gcc_configure=
+gcc_mingw_extraconf="--with-libiconv-prefix=${local_builds}/destdir/${host}/usr --with-system-zlib=no"
+gcc_staticlink="no"
+gcc_stage1_flags="--with-mpc=${local_builds}/destdir/${host} --with-mpfr=${local_builds}/destdir/${host} --with-gmp=${local_builds}/destdir/${host} --with-gnu-as --with-gnu-ld --disable-libmudflap --enable-lto --enable-shared --without-included-gettext --enable-nls --with-system-zlib --disable-sjlj-exceptions --enable-gnu-unique-object --enable-linker-build-id --disable-libstdcxx-pch --enable-c99 --enable-clocale=gnu --enable-libstdcxx-debug --enable-long-long --with-cloog=no --with-ppl=no --with-isl=no --disable-multilib --enable-fix-cortex-a53-835769 --enable-fix-cortex-a53-843419 --with-arch=armv8-a --enable-threads=posix --enable-multiarch --enable-libstdcxx-time=yes --enable-gnu-indirect-function --disable-libssp --disable-libquadmath --disable-threads --without-headers --with-newlib --disable-libmudflap --disable-bootstrap --disable-decimal-float --disable-libgomp --disable-libatomic --disable-libsanitizer --disable-plugins --disable-libitm --with-sysroot=${local_builds}/sysroot-aarch64-linux-gnu --disable-shared --with-glibc-version=2.18 --disable-libstdcxx --disable-libvtv --enable-languages=c,c++"
+gcc_stage2_flags="--with-mpc=${local_builds}/destdir/${host} --with-mpfr=${local_builds}/destdir/${host} --with-gmp=${local_builds}/destdir/${host} --with-gnu-as --with-gnu-ld --disable-libmudflap --enable-lto --enable-shared --without-included-gettext --enable-nls --with-system-zlib --disable-sjlj-exceptions --enable-gnu-unique-object --enable-linker-build-id --disable-libstdcxx-pch --enable-c99 --enable-clocale=gnu --enable-libstdcxx-debug --enable-long-long --with-cloog=no --with-ppl=no --with-isl=no --disable-multilib --enable-fix-cortex-a53-835769 --enable-fix-cortex-a53-843419 --with-arch=armv8-a --enable-threads=posix --enable-multiarch --enable-libstdcxx-time=yes --enable-gnu-indirect-function --with-build-sysroot=${sysroots} --with-sysroot=${local_builds}/destdir/${host}/aarch64-linux-gnu/libc --enable-checking=release --disable-bootstrap --enable-languages=c,c++,fortran,lto"
+
+# Component data for glibc
+glibc_url=http://git.linaro.org/git/toolchain
+glibc_branch=release/2.25/master
+glibc_revision=a0408ec51ea862dda102482036c401d2e707e20b
+glibc_filespec=glibc.git
+glibc_makeflags="PARALLELMFLAGS=-j32"
+glibc_mingw_only="no"
+glibc_linuxhost_only="no"
+glibc_configure="--disable-profile --without-gd --enable-obsolete-rpc --with-headers=${sysroots}/usr/include libc_cv_forced_unwind=yes libc_cv_c_cleanup=yes --without-selinux --disable-werror"
+
+# Component data for gdb
+gdb_url=http://git.linaro.org/git/toolchain
+gdb_branch=gdb-8.3-branch
+gdb_revision=b71095d8f1ad365722c6fbd491fdbaa3d5b92788
+gdb_filespec=binutils-gdb.git
+gdb_mingw_only="no"
+gdb_linuxhost_only="no"
+gdb_configure="--with-gnu-ld --enable-plugins --enable-tui --with-pkgversion=Linaro_GDB-2019.12 --disable-gas --disable-binutils --disable-ld --disable-gold --disable-gprof --with-python=yes"
+gdb_mingw_extraconf="--disable-tui --with-python=${local_snapshots}/python-2.7.4-mingw32 CFLAGS=-I${local_builds}/destdir/${host}/usr/include LDFLAGS=-L${local_builds}/destdir/${host}/usr/lib"
+gdb_staticlink="yes"
+
+# Component data for qemu
+qemu_url=git://git.qemu.org
+qemu_branch=v3.1.0
+qemu_revision=32a1a94dd324d33578dca1dc96d7896a0244d768
+qemu_filespec=qemu.git
+qemu_mingw_only="no"
+qemu_linuxhost_only="yes"
+qemu_configure="--target-list=aarch64-linux-user"
+qemu_staticlink="yes"
+
+# Component data for gdbserver
+gdbserver_url=http://git.linaro.org/git/toolchain
+gdbserver_branch=gdb-8.3-branch
+gdbserver_revision=b71095d8f1ad365722c6fbd491fdbaa3d5b92788
+gdbserver_filespec=binutils-gdb.git
+gdbserver_mingw_only="no"
+gdbserver_linuxhost_only="no"
+gdbserver_configure="CPPFLAGS=--sysroot=${sysroots} CFLAGS=--sysroot=${sysroots} CXXFLAGS=--sysroot=${sysroots}"
+gdbserver_staticlink="yes"
+
+
+clibrary=glibc
+target=aarch64-linux-gnu
+manifestid=c1f48d3a4995c79833da69f5a10b84a94862d804
+
+ ##############################################################################
+ # Everything below this line is only for informational purposes for developers
+ ##############################################################################
+
+# Build machine data
+build: linux
+host: x86_64-unknown-linux-gnu
+kernel: 4.4.0-101-generic
+hostname: 29b6c2d2fe29
+distribution: trusty
+host_gcc: gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.4) 
+
+# These aren't used in the repeat build. just a sanity check for developers
+build directory: /home/tcwg-buildslave/workspace/tcwg-make-release_0/_build/builds
+sysroot directory: /home/tcwg-buildslave/workspace/tcwg-make-release_0/_build/sysroots/aarch64-linux-gnu
+snapshots directory: /home/tcwg-buildslave/workspace/tcwg-make-release_0/snapshots
+git reference directory: /home/tcwg-buildslave/snapshots-ref
+
+abe_url=https://git.linaro.org/toolchain
+abe_branch=branch=
+abe_revision=a97a26ca24a1ebde20f5ab6ea4833e7bae05d61a
+abe_filespec=abe.git
+abe_configure="--with-local-snapshots=${local_snapshots} --with-git-reference-dir=/home/tcwg-buildslave/snapshots-ref"
+
+--------------------- gcc ----------------------
+commit 44900969eaa3e634ec386fa51ce0810f92ef07e1
+Author: TCWG Automation <linaro-toolchain@lists.linaro.org>
+Date:   Wed Dec 4 07:15:30 2019 +0000
+
+    Make Linaro GCC Release 7.5-2019.12.
+    
+    	gcc/
+    	* LINARO-VERSION: Update.
+
+--------------------- binutils ----------------------
+commit 0231dce141801ffcdfef8b7f14cd903a6d3f21ba
+Author: Tamar Christina <tamar.christina@arm.com>
+Date:   Tue Dec 19 12:05:20 2017 +0000
+
+    Correct disassembly of dot product instructions.
+    
+    Dot products deviate from the normal disassembly rules for lane indexed
+    instruction. Their canonical representation is in the form of:
+    
+    v0.2s, v0.8b, v0.4b[0] instead of v0.2s, v0.8b, v0.b[0] to try to denote
+    that these instructions select 4x 1 byte elements instead of a single 1 byte
+    element.
+    
+    Previously we were disassembling them following the normal rules, this patch
+    corrects the disassembly.
+    
+    gas/
+    
+    	PR gas/22559
+    	* config/tc-aarch64.c (vectype_to_qualifier): Support AARCH64_OPND_QLF_S_4B.
+    	* gas/testsuite/gas/aarch64/dotproduct.d: Update disassembly.
+    
+    include/
+    
+    	PR gas/22559
+    	* aarch64.h (aarch64_opnd_qualifier): Add AARCH64_OPND_QLF_S_4B.
+    
+    opcodes/
+    
+    	PR gas/22559
+    	* aarch64-asm.c (aarch64_ins_reglane): Change AARCH64_OPND_QLF_S_B to
+    	AARCH64_OPND_QLF_S_4B
+    	* aarch64-dis.c (aarch64_ext_reglane): Change AARCH64_OPND_QLF_S_B to
+    	AARCH64_OPND_QLF_S_4B
+    	* aarch64-opc.c (aarch64_opnd_qualifiers): Add 4b variant.
+    	* aarch64-tbl.h (QL_V2DOT): Change S_B to S_4B.
+    
+    Change-Id: Ie80d878ceaeaca281f85583e77e4e367e2a909ea
+
+--------------------- glibc ----------------------
+commit a0408ec51ea862dda102482036c401d2e707e20b
+Author: Florian Weimer <fweimer@redhat.com>
+Date:   Fri Nov 22 22:10:42 2019 +0100
+
+    libio: Disable vtable validation for pre-2.1 interposed handles [BZ #25203]
+    
+    Commit c402355dfa7807b8e0adb27c009135a7e2b9f1b0 ("libio: Disable
+    vtable validation in case of interposition [BZ #23313]") only covered
+    the interposable glibc 2.1 handles, in libio/stdfiles.c.  The
+    parallel code in libio/oldstdfiles.c needs similar detection logic.
+    
+    Fixes (again) commit db3476aff19b75c4fdefbe65fcd5f0a90588ba51
+    ("libio: Implement vtable verification [BZ #20191]").
+    
+    Change-Id: Ief6f9f17e91d1f7263421c56a7dc018f4f595c21
+    (cherry picked from commit cb61630ed712d033f54295f776967532d3f4b46a)
+
+--------------------- abe ----------------------
+commit a97a26ca24a1ebde20f5ab6ea4833e7bae05d61a
+Author: Christophe Lyon <christophe.lyon@linaro.org>
+Date:   Tue Dec 3 07:50:34 2019 +0000
+
+    Revert "latest-rel: upgrade to glibc-2.30"
+    
+    This reverts commit 564fa7ef59c03c3280e631f097f6b32fdbf218aa.
+    
+    I've noticed timeouts in make check in glibc in our x86_64 builds,
+    which started after the upgrade to glibc-2.30.
+    
+    Change-Id: Ib4847c6b2aee90f0c3105a23183a480ba1175903
+
